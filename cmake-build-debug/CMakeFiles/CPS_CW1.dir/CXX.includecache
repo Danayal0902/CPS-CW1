@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/danayaliftikhar/Documents/CPS-CW1/main.cpp
+algorithm
+-
+cassert
+-
+chrono
+-
+cmath
+-
+functional
+-
+iostream
+-
+random
+-
+vector
+-
+fstream
+-
+iostream
+-
+string
+-
+
