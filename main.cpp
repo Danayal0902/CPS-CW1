@@ -9,6 +9,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <ctime>
+//#include <omp.h>
 
 using namespace std;
 using namespace std::chrono;
@@ -291,14 +293,17 @@ bool array2bmp(const std::string &filename, const vector<vec> &pixels, const siz
 
 int main(int argc, char **argv)
 {
+    int start_s=clock();
+
+
     random_device rd;
     default_random_engine generator(rd());
     uniform_real_distribution<double> distribution;
     auto get_random_number = bind(distribution, generator);
 
     // *** These parameters can be manipulated in the algorithm to modify work undertaken ***
-    constexpr size_t dimension = 2048;
-    constexpr size_t samples = 4; // Algorithm performs 4 * samples per pixel.
+    constexpr size_t dimension = 600;
+    constexpr size_t samples = 1; // Algorithm performs 4 * samples per pixel.
     vector<sphere> spheres
             {
                     sphere(1e5, vec(1e5 + 1, 40.8, 81.6), vec(), vec(0.75, 0.25, 0.25), reflection_type::DIFFUSE),
@@ -342,5 +347,11 @@ int main(int argc, char **argv)
         }
     }
     cout << "img.bmp" << (array2bmp("img.bmp", pixels, dimension, dimension) ? " Saved\n" : " Save Failed\n");
+
+
+    int stop_s=clock();
+    cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
+
+
     return 0;
 }
