@@ -11,6 +11,7 @@
 #include <string>
 #include <ctime>
 //#include <omp.h>
+//#include <stdio.h>
 
 using namespace std;
 using namespace std::chrono;
@@ -295,7 +296,7 @@ int main(int argc, char **argv)
 {
     int start_s=clock();
 
-    #pragma omp parallel private(id)
+    //#pragma omp parallel
 
 
     random_device rd;
@@ -304,8 +305,8 @@ int main(int argc, char **argv)
     auto get_random_number = bind(distribution, generator);
 
     // *** These parameters can be manipulated in the algorithm to modify work undertaken ***
-    constexpr size_t dimension = 600;
-    constexpr size_t samples = 16; // Algorithm performs 4 * samples per pixel.
+    constexpr size_t dimension = 1024;
+    constexpr size_t samples = 1; // Algorithm performs 4 * samples per pixel.
     vector<sphere> spheres
             {
                     sphere(1e5, vec(1e5 + 1, 40.8, 81.6), vec(), vec(0.75, 0.25, 0.25), reflection_type::DIFFUSE),
